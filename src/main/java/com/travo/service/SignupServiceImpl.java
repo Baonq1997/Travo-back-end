@@ -30,6 +30,7 @@ public class SignupServiceImpl implements SignupService{
         user.setUsername(signupDTO.getUsername());
         user.setPassword(bCryptPasswordEncoder.encode(signupDTO.getPassword()));
         user.setFullName(signupDTO.getFullName());
+        user.setEnable(true);
         return userRepository.save(user);
     }
 }
