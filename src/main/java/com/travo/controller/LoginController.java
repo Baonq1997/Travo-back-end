@@ -10,17 +10,23 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class LoginController {
 
-    @GetMapping("/api/auth")
+    @GetMapping("/auth")
     @ResponseBody
     public ResponseEntity authCheck() {
         return ResponseEntity.status(HttpStatus.OK).body("Logged in!");
     }
 
-    @GetMapping("/login")
-    public ModelAndView loginPage(ModelAndView model) {
-        model.setViewName("login");
-        return model;
+    @GetMapping("/unauth")
+    @ResponseBody
+    public ResponseEntity unauth() {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Username or password is incorrect");
     }
+
+//    @GetMapping("/login")
+//    public ModelAndView loginPage(ModelAndView model) {
+//        model.setViewName("login");
+//        return model;
+//    }
 
     @GetMapping("/home")
     public ModelAndView homePage(ModelAndView model) {
